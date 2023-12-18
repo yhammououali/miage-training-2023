@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Controller\BaseController;
-use Twig\Environment;
 
 final class PostController extends BaseController
 {
@@ -14,9 +13,8 @@ final class PostController extends BaseController
 
     public function create()
     {
-        // TODO To dev;
-
-        // Appel à la BDD
+        // Si formulaire existe alors je récupère les données
+        echo $this->render('post/create.html.twig');
     }
 
     public function read()
