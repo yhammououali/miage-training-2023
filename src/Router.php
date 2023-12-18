@@ -35,9 +35,13 @@ final class Router
                 throw new \Exception(sprintf('File %s not exist!', "{$controller}.php"));
             }
 
-            $test = new PostController();
+            $controller = new PostController();
 
-            $controller = new $controller();
+            if (!method_exists($controller, $action)) {
+                throw new \Exception(sprintf('Action %s not exist in %s!', $action, $controller));
+            }
+
+            $controller->$action();
         } catch (\Exception $exception) {
             var_dump($exception->getMessage());
         }

@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Controller\BaseController;
+use Twig\Environment;
 
-class PostController extends BaseController
+final class PostController extends BaseController
 {
     public function list(): array
     {
@@ -14,11 +15,20 @@ class PostController extends BaseController
     public function create()
     {
         // TODO To dev;
+
+        // Appel à la BDD
     }
 
     public function read()
     {
         // TODO To dev;
+        echo $this->render('index.html.twig', [
+            'colors' => [
+                'red',
+                'yellow',
+                'green',
+            ]
+        ]);
     }
 
     public function update()
