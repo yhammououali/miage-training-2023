@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Controller\PostController;
-
 final class Router
 {
     private array $routes = [];
@@ -35,7 +33,7 @@ final class Router
                 throw new \Exception(sprintf('File %s not exist!', "{$controller}.php"));
             }
 
-            $controller = new PostController();
+            $controller = new ("App\\Controller\\{$controller}")();
 
             if (!method_exists($controller, $action)) {
                 throw new \Exception(sprintf('Action %s not exist in %s!', $action, $controller));

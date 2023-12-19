@@ -13,8 +13,17 @@ final class PostController extends BaseController
 
     public function create()
     {
-        // Si formulaire existe alors je récupère les données
-        echo $this->render('post/create.html.twig');
+        if ('POST' === $_SERVER['REQUEST_METHOD']) {
+            $data = [
+                'data' => [
+                    'title' => $_POST['title'],
+                    'introduction' => $_POST['introduction'],
+                    'content' => $_POST['content'],
+                ]
+            ];
+        }
+
+        echo $this->render('post/create.html.twig', $data ?? []);
     }
 
     public function read()
@@ -25,7 +34,7 @@ final class PostController extends BaseController
                 'red',
                 'yellow',
                 'green',
-            ]
+            ],
         ]);
     }
 
